@@ -98,7 +98,7 @@ volumes:
   nginx_volume:
     external: false
   ssl_certificates:
-    external: false
+    external: true
   jira_postgresql_volume:
     external: false
   jira_volume:
