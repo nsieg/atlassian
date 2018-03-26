@@ -2,6 +2,9 @@
 cd /home
 ~~~~
 ~~~~
+docker volume create --name=ssl_certificates
+~~~~
+~~~~
 mkdir Letsencrypt
 curl -o /Letsencrypt/docker-compose.yml https://raw.githubusercontent.com/blacklabelops/atlassian/master/Letsencrypt/docker-compose.yml
 cd Letsencrypt
