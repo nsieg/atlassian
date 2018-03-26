@@ -10,8 +10,6 @@ services:
       default:
         aliases:
           - '${CONFLUENCE_DOMAIN_NAME}'
-          - '${CROWD_DOMAIN_NAME}'
-          - '${BITBUCKET_DOMAIN_NAME}'
           - '${JIRA_DOMAIN_NAME}'
     volumes:
       - nginx_volume:/home/nginx
@@ -112,15 +110,8 @@ volumes:
     external: false
   jira_volume:
     external: false
-  crowd_postgresql_volume:
-    external: false
-  crowd_volume:
-    external: false
   confluence_postgresql_volume:
     external: false
   confluence_volume:
     external: false
-  bitbucket_postgresql_volume:
-    external: false
-  bitbucket_volume:
-    external: false
+
