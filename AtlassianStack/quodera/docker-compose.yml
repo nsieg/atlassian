@@ -26,8 +26,7 @@ services:
       - 'SERVER1CERTIFICATE_FILE=/etc/letsencrypt/live/${JIRA_DOMAIN_NAME}/fullchain.pem'
       - 'SERVER1CERTIFICATE_KEY=/etc/letsencrypt/live/${JIRA_DOMAIN_NAME}/privkey.pem'
       - 'SERVER1CERTIFICATE_TRUSTED=/etc/letsencrypt/live/${JIRA_DOMAIN_NAME}/fullchain.pem'
-      - 'SERVER1PROXY_APPLICATION=jira'
-    
+      - 'SERVER1PROXY_APPLICATION=jira'    
       - 'SERVER3SERVER_NAME=${CONFLUENCE_DOMAIN_NAME}'
       - 'SERVER3REVERSE_PROXY_LOCATION1=/synchrony'
       - 'SERVER3REVERSE_PROXY_PASS1=http://confluence:8091'
@@ -41,10 +40,8 @@ services:
       - 'SERVER3CERTIFICATE_FILE=/etc/letsencrypt/live/${JIRA_DOMAIN_NAME}/fullchain.pem'
       - 'SERVER3CERTIFICATE_KEY=/etc/letsencrypt/live/${JIRA_DOMAIN_NAME}/privkey.pem'
       - 'SERVER3CERTIFICATE_TRUSTED=/etc/letsencrypt/live/${JIRA_DOMAIN_NAME}/fullchain.pem'
-      - 'SERVER3PROXY_APPLICATION=confluence'
-     
-    restart: unless-stopped
-	
+      - 'SERVER3PROXY_APPLICATION=confluence'     
+    restart: unless-stopped	
   jira_postgresql:
     image: blacklabelops/postgres:${ATLASSIAN_POSTGRES_VERSION}
     hostname: jira_postgresql
@@ -58,8 +55,7 @@ services:
       - 'POSTGRES_ENCODING=UNICODE'
       - 'POSTGRES_COLLATE=C'
       - 'POSTGRES_COLLATE_TYPE=C'
-    restart: unless-stopped
-	
+    restart: unless-stopped	
   jira:
     image: blacklabelops/jira:${JIRA_VERSION}
     hostname: jira
@@ -74,8 +70,7 @@ services:
       - 'JIRA_DATABASE_URL=postgresql://${ATLASSIAN_DB_USERNAME}@jira_postgresql/atlassiandb'
       - 'JIRA_DB_PASSWORD=${ATLASSIAN_DB_PASSWORD}'
       - 'JIRA_DELAYED_START=${ATLASSIAN_DB_DELAYED_START}'
-    restart: unless-stopped 
-	
+    restart: unless-stopped 	
   confluence_postgresql:
     image: blacklabelops/postgres:${ATLASSIAN_POSTGRES_VERSION}
     hostname: confluence_postgresql
@@ -86,8 +81,7 @@ services:
       - 'POSTGRES_DB=atlassiandb'
       - 'POSTGRES_USER=${ATLASSIAN_DB_USERNAME}'
       - 'POSTGRES_PASSWORD=${ATLASSIAN_DB_PASSWORD}'
-    restart: unless-stopped
-	
+    restart: unless-stopped	
   confluence:
     image: blacklabelops/confluence:${CONFLUENCE_VERSION}
     hostname: confluence
@@ -100,7 +94,6 @@ services:
       - "CONFLUENCE_PROXY_PORT=${ATLASSIAN_PROXY_PORT}"
       - "CONFLUENCE_PROXY_SCHEME=${ATLASSIAN_PROXY_SCHEME}"
     restart: unless-stopped  
-
 volumes:
   nginx_volume:
     external: false
