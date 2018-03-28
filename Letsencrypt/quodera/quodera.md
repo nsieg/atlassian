@@ -11,6 +11,7 @@ cd Letsencrypt
 ~~~~
 ~~~~
 docker-compose run --rm \
+    -p 80:80 \
     -p 443:443 \
     -e LETSENCRYPT_EMAIL=nils.siegfried@quodera.com \
     -e LETSENCRYPT_DOMAIN=jira.quodera.com \
